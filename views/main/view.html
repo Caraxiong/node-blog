@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+{% block content %}
+	<div>
+		<div>
+			<h1>{{content.title}}</h1>
+			<p>
+				<label>作者：</label>{{content.user.username}}
+			</p>
+			<p>
+				<label>时间：</label>{{content.addTime | date('Y年m月d日 H:i:s',-8*60)}}
+			</p>
+			<p>
+				<label>阅读量：</label>{{content.views}}
+			</p>
+			<p>
+				<label>评论：</label>10
+			</p>
+			<p>{{content.content}}</p>
+		</div>
+	</div>
+{% endblock %}

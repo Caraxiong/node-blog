@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src="/public/js/jquery.min.js"></script>
+	<script type="text/javascript" src="/public/js/index.js"></script>
+</head>
+<body>
+
+	<nav>
+		<div class="menu">
+			{% if category=='' %}
+			<a href="/" class="focus">首页</a>
+			{% else %}
+			<a href="/">首页</a>
+			{% endif %}
+			{% for cate in categories %}
+				{% if category==cate.id %}
+				<a href="/?category={{cate.id}}" class="focus">{{cate.name}}</a>
+				{% else %}
+				<a href="/?category={{cate.id}}">{{cate.name}}</a>
+				{% endif %}
+			{% endfor %}
+		</div>
+	</nav>
+	{% block content %}{% endblock %}
+	
+	{% if userInfo._id %}
+	<div class="" id="userInfoBox">
+		<span class="username">{{userInfo.username}}</span>
+		{% if userInfo.isAdmin %}
+		<span class="info">你好，管理员！</span>
+		<a href="/admin">进入管理首页</a>
+		{% else %}
+		<span class="info">欢迎你</span>
+		{% endif %}
+		<button>退出</button>	
+	</div>
+	{% else %}
+	<div class="" id="loginBox" style="display: none;">
+		<input type="text" name="username" placeholder="请输入用户名">
+		<input type="password" name="password" placeholder="请输入密码">
+		<button>登录</button>
+		<a href="javascript:void(0)">去注册</a>
+		<div class="colWarning"></div>		
+	</div>
+
+	<div class="" id="registerBox">
+		<input type="text" name="username" placeholder="请输入用户名">
+		<input type="password" name="password" placeholder="请输入密码">
+		<input type="password" name="rePassword" placeholder="请确认密码">
+		<button>注册</button>
+		<a href="javascript:void(0)">去登录</a>
+		<div class="colWarning"></div>		
+	</div>
+	
+	{% endif %}
+</body>
+</html>
