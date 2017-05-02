@@ -63,4 +63,6 @@ router.get('/view',function(req,res){
 		res.render('main/view',data);
 	});
 })
+
+
 module.exports = router

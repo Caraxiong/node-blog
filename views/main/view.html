@@ -13,9 +13,27 @@
 				<label>阅读量：</label>{{content.views}}
 			</p>
 			<p>
-				<label>评论：</label>10
+				<label>评论数：</label>10
 			</p>
 			<p>{{content.content}}</p>
 		</div>
 	</div>
+
+	<p>一共有<span class="msgCount"></span>条评论</p>
+	{% if userInfo._id %}
+	<div class="" id="">
+		<p class="text-left">
+			<textarea id="messageContent"></textarea>
+			<input type="hidden" id="contentId" value="{{content.id}}">
+			<button id="messageBtn">提交</button>
+		</p>
+	</div>
+	{% else %}
+		<p>你还没有登录，请先登录！</p>
+	{% endif %}
+
+	<div class="messageList"></div>
+
+	
+	<script type="text/javascript" src="/public/js/view.js"></script>
 {% endblock %}
